@@ -1,5 +1,4 @@
 <?php
-/** krik krik krik...*/
 
 try {
     $z = "";
@@ -101833,7 +101832,10 @@ try {
         if (is_array($t)) {
             switch ($t[0]) {
                 case T_OPEN_TAG:
+                    break;
                 case T_CLOSE_TAG:
+                    if ($inEcho) { $smartCode .= ');'; $inEcho = false; }
+                    else { $smartCode .= ';'; }
                     break;
                 case T_OPEN_TAG_WITH_ECHO:
                     $smartCode .= 'echo (';
